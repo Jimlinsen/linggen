@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.tsbuildinfo
+*.js
+*.d.ts
+!vite.config.js
+!mock-api.js
+!vite-plugin.js
+!scripts/*.js
+!scripts/*.mjs
+
+# Lock files (regenerated from package.json)
+package-lock.json
+
+# Environment
+.env
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code local settings
+.claude/
+
+# SQLite databases (evolution engine runtime)
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+
+# nutshell config (may contain API keys)
+.nutshell/

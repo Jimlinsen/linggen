@@ -1,0 +1,12 @@
+{
+  "name": "@nutshell/adapter-openai",
+  "version": "0.1.0",
+  "description": "Nutshell adapter for OpenAI Assistants API",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": { ".": { "import": "./src/index.js", "types": "./src/index.d.ts" } },
+  "scripts": { "build": "tsc" },
+  "peerDependencies": { "@nutshell/core": "^0.1.0" },
+  "devDependencies": { "typescript": "^5.4.0", "@types/node": "^20.0.0" }
+}

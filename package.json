@@ -1,0 +1,28 @@
+{
+  "name": "nutshell",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Making virtual beings real. World seed + soul alchemy for AI characters.",
+  "workspaces": [
+    "packages/core",
+    "packages/cli",
+    "packages/studio",
+    "packages/evolution",
+    "packages/adapters/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "dev": "npm run dev --workspace packages/studio",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "eslint packages/*/src"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^20.0.0",
+    "eslint": "^9.0.0"
+  },
+  "engines": { "node": ">=18.0.0" },
+  "repository": {},
+  "license": "MIT",
+  "keywords": ["ai-characters","soul-alchemy","world-building","mythology","openclaw","sillytavern","llm"]
+}

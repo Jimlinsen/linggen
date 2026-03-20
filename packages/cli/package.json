@@ -1,0 +1,21 @@
+{
+  "name": "@nutshell/cli",
+  "version": "0.1.0",
+  "description": "Command-line interface for nutshell",
+  "type": "module",
+  "bin": { "nutshell": "./dist/index.js" },
+  "main": "./dist/index.js",
+  "scripts": { "build": "tsc", "dev": "tsc --watch" },
+  "dependencies": {
+    "@nutshell/core": "^0.1.0",
+    "@nutshell/evolution": "^0.1.0",
+    "@nutshell/adapter-openclaw": "^0.1.0",
+    "@nutshell/adapter-sillytavern": "^0.1.0",
+    "@nutshell/adapter-openai": "^0.1.0",
+    "commander": "^12.0.0",
+    "ora": "^8.0.0",
+    "chalk": "^5.3.0",
+    "conf": "^12.0.0"
+  },
+  "devDependencies": { "typescript": "^5.4.0", "@types/node": "^20.0.0" }
+}
