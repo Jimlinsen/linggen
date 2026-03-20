@@ -211,6 +211,8 @@ const TRADITIONS = [
   { id: "zelda",        label: "塞尔达传说",  glyph: "◈",  color: "#c8a000", sub: "The Legend of Zelda",   category: "fiction", subcategory: "games" },
   { id: "elden",        label: "艾尔登法环",  glyph: "⊗",  color: "#4a3a1a", sub: "Elden Ring",            category: "fiction", subcategory: "games" },
   { id: "genshin",      label: "原神",        glyph: "✦",  color: "#4a9ab4", sub: "Genshin Impact",        category: "fiction", subcategory: "games" },
+  { id: "fate",         label: "Fate/stay night", glyph: "⚔", color: "#8b1a1a", sub: "圣杯战争",              category: "fiction", subcategory: "anime" },
+  { id: "steinsgate",   label: "命运石之门",  glyph: "⏱",  color: "#2a6a2a", sub: "Steins;Gate",            category: "fiction", subcategory: "anime" },
 ];
 
 const FICTION_CATEGORIES = [
