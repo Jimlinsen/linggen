@@ -156,7 +156,7 @@ openclaw restart
 
 ---
 
-## 40 个可用世界
+## 72 个可用世界
 
 ### 神话（12）
 
@@ -169,7 +169,7 @@ openclaw restart
 | `egyptian` | 古埃及 | `aztec` | 阿兹特克 |
 | `mesopotamian` | 美索不达米亚 | `celtic` | 凯尔特 |
 
-### 虚构（28）
+### 虚构（30）
 
 | key | 世界 | key | 世界 |
 |-----|------|-----|------|
@@ -187,6 +187,27 @@ openclaw restart
 | `akira` | AKIRA | `genshin` | 原神 |
 | `elden` | 法环 | `darksouls` | 黑魂 |
 | `zelda` | 塞尔达 | `rickmorty` | 瑞莫 |
+| `steinsgate` | 命运石之门 | `fate` | Fate |
+
+### 历史（30）
+
+| key | 时代 | key | 时代 |
+|-----|------|-----|------|
+| `warring-states` | 春秋战国 | `athens` | 古雅典 |
+| `qin` | 秦帝国 | `rome-republic` | 罗马共和 |
+| `three-kingdoms` | 三国 | `byzantine` | 拜占庭 |
+| `wei-jin` | 魏晋风骨 | `medieval` | 中世纪欧洲 |
+| `tang` | 盛唐 | `renaissance` | 文艺复兴 |
+| `song` | 两宋 | `exploration` | 大航海时代 |
+| `late-ming` | 明末 | `french-revolution` | 法国大革命 |
+| `late-qing` | 清末民初 | `victorian` | 维多利亚 |
+| `abbasid` | 阿拔斯黄金时代 | `sengoku` | 战国日本 |
+| `mongol` | 蒙古帝国 | `bakumatsu` | 幕末 |
+| `ottoman` | 奥斯曼帝国 | `viking` | 维京时代 |
+| `inca` | 印加帝国 | `sparta` | 斯巴达 |
+| `american-frontier` | 美国西部 | `wwi` | 一战西线 |
+| `weimar` | 魏玛共和国 | `cold-war` | 冷战 |
+| `counterculture` | 六十年代反文化 | `soviet` | 苏联 |
 
 ---
 

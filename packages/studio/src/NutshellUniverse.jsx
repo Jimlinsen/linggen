@@ -213,6 +213,42 @@ const TRADITIONS = [
   { id: "genshin",      label: "原神",        glyph: "✦",  color: "#4a9ab4", sub: "Genshin Impact",        category: "fiction", subcategory: "games" },
   { id: "fate",         label: "Fate/stay night", glyph: "⚔", color: "#8b1a1a", sub: "圣杯战争",              category: "fiction", subcategory: "anime" },
   { id: "steinsgate",   label: "命运石之门",  glyph: "⏱",  color: "#2a6a2a", sub: "Steins;Gate",            category: "fiction", subcategory: "anime" },
+  // ── 历史·中国 ─────────────────────────────────────────────────────────────
+  { id: "warring-states",  label: "春秋战国",    glyph: "⚔",  color: "#8b7355", sub: "Warring States",         category: "history", subcategory: "china" },
+  { id: "qin",             label: "秦帝国",      glyph: "⬛",  color: "#2a2a2a", sub: "Qin Empire",             category: "history", subcategory: "china" },
+  { id: "three-kingdoms",  label: "三国",        glyph: "◎",  color: "#c44e52", sub: "Three Kingdoms",          category: "history", subcategory: "china" },
+  { id: "wei-jin",         label: "魏晋风骨",    glyph: "☁",  color: "#a8b8c8", sub: "Wei-Jin Spirit",          category: "history", subcategory: "china" },
+  { id: "tang",            label: "盛唐",        glyph: "✦",  color: "#d4a847", sub: "Tang Dynasty",            category: "history", subcategory: "china" },
+  { id: "song",            label: "两宋",        glyph: "◇",  color: "#7eb8d4", sub: "Song Dynasty",            category: "history", subcategory: "china" },
+  { id: "late-ming",       label: "明末",        glyph: "◉",  color: "#8b3a3a", sub: "Late Ming",               category: "history", subcategory: "china" },
+  { id: "late-qing",       label: "清末民初",    glyph: "⊗",  color: "#4a4a6a", sub: "Late Qing",               category: "history", subcategory: "china" },
+  // ── 历史·地中海与欧洲 ─────────────────────────────────────────────────────
+  { id: "athens",          label: "古雅典",      glyph: "⏣",  color: "#6a8eb0", sub: "Athenian Democracy",      category: "history", subcategory: "mediterranean" },
+  { id: "rome-republic",   label: "罗马共和",    glyph: "⚜",  color: "#8b4513", sub: "Roman Republic",          category: "history", subcategory: "mediterranean" },
+  { id: "byzantine",       label: "拜占庭",      glyph: "◈",  color: "#9b6fb0", sub: "Byzantine Empire",        category: "history", subcategory: "mediterranean" },
+  { id: "medieval",        label: "中世纪",      glyph: "✝",  color: "#5a5a7a", sub: "Medieval Europe",         category: "history", subcategory: "mediterranean" },
+  { id: "renaissance",     label: "文艺复兴",    glyph: "❋",  color: "#c49a6c", sub: "Renaissance",             category: "history", subcategory: "mediterranean" },
+  { id: "exploration",     label: "大航海",      glyph: "⚓",  color: "#3a7a9a", sub: "Age of Exploration",      category: "history", subcategory: "mediterranean" },
+  { id: "french-revolution", label: "法国大革命", glyph: "⚡", color: "#c41e3a", sub: "French Revolution",       category: "history", subcategory: "mediterranean" },
+  { id: "victorian",       label: "维多利亚",    glyph: "⊙",  color: "#4a3a2a", sub: "Victorian Era",           category: "history", subcategory: "mediterranean" },
+  // ── 历史·中东与中亚 ───────────────────────────────────────────────────────
+  { id: "abbasid",         label: "阿拔斯",      glyph: "☪",  color: "#2a7a4a", sub: "Abbasid Golden Age",      category: "history", subcategory: "mideast" },
+  { id: "mongol",          label: "蒙古帝国",    glyph: "⟐",  color: "#7a6a3a", sub: "Mongol Empire",           category: "history", subcategory: "mideast" },
+  { id: "ottoman",         label: "奥斯曼",      glyph: "☾",  color: "#6a3a3a", sub: "Ottoman Empire",          category: "history", subcategory: "mideast" },
+  // ── 历史·日本 ─────────────────────────────────────────────────────────────
+  { id: "sengoku",         label: "战国日本",    glyph: "⛩",  color: "#b04040", sub: "Sengoku Japan",           category: "history", subcategory: "japan" },
+  { id: "bakumatsu",       label: "幕末",        glyph: "⊕",  color: "#3a5a7a", sub: "Bakumatsu",               category: "history", subcategory: "japan" },
+  // ── 历史·其他文明 ─────────────────────────────────────────────────────────
+  { id: "viking",          label: "维京时代",    glyph: "ᚱ",  color: "#5a7a8a", sub: "Viking Age",              category: "history", subcategory: "other-civ" },
+  { id: "inca",            label: "印加帝国",    glyph: "☀",  color: "#c8a84b", sub: "Inca Empire",             category: "history", subcategory: "other-civ" },
+  { id: "sparta",          label: "斯巴达",      glyph: "⊗",  color: "#8b1a1a", sub: "Sparta",                  category: "history", subcategory: "other-civ" },
+  // ── 历史·现代 ─────────────────────────────────────────────────────────────
+  { id: "american-frontier", label: "西部拓荒",  glyph: "★",  color: "#b07a4a", sub: "American Frontier",       category: "history", subcategory: "modern" },
+  { id: "wwi",             label: "一战西线",    glyph: "✦",  color: "#5a5a5a", sub: "WWI Western Front",       category: "history", subcategory: "modern" },
+  { id: "weimar",          label: "魏玛共和",    glyph: "◇",  color: "#9a7a5a", sub: "Weimar Republic",         category: "history", subcategory: "modern" },
+  { id: "cold-war",        label: "冷战",        glyph: "☢",  color: "#4a6a4a", sub: "Cold War",                category: "history", subcategory: "modern" },
+  { id: "counterculture",  label: "六十年代",    glyph: "☮",  color: "#c87ba0", sub: "1960s Counterculture",    category: "history", subcategory: "modern" },
+  { id: "soviet",          label: "苏联",        glyph: "☭",  color: "#cc1a1a", sub: "Soviet Union",            category: "history", subcategory: "modern" },
 ];
 
 const FICTION_CATEGORIES = [
@@ -222,6 +258,15 @@ const FICTION_CATEGORIES = [
   { key: "scifi",           label: "科幻" },
   { key: "chinese",         label: "中文世界" },
   { key: "games",           label: "游戏" },
+];
+
+const HISTORY_CATEGORIES = [
+  { key: "china",           label: "中国史" },
+  { key: "mediterranean",   label: "地中海与欧洲" },
+  { key: "mideast",         label: "中东与中亚" },
+  { key: "japan",           label: "日本" },
+  { key: "other-civ",       label: "其他文明" },
+  { key: "modern",          label: "现代" },
 ];
 
 function extractJSON(text) {
@@ -1177,7 +1222,8 @@ echo "${soul.character_name} — 心跳已注册"
             <div style={{ display: "flex", gap: 0, marginBottom: "20px", borderBottom: "1px solid #1a1628" }}>
               {[
                 { key: "myth",    label: "神话传统", count: 12 },
-                { key: "fiction", label: "架空世界", count: 28 },
+                { key: "fiction", label: "架空世界", count: TRADITIONS.filter(t => t.category === "fiction").length },
+                { key: "history", label: "历史时代", count: TRADITIONS.filter(t => t.category === "history").length },
               ].map(tab => (
                 <button
                   key={tab.key}
@@ -1249,6 +1295,52 @@ echo "${soul.character_name} — 心跳已注册"
                         <div style={{ flex: 1, height: 1, background: "#14121e" }} />
                       </div>
                       {/* 等宽网格 */}
+                      <div style={{
+                        display: "grid", gridTemplateColumns: "repeat(5, 1fr)",
+                        gap: "7px",
+                      }}>
+                        {worlds.map(t => (
+                          <button
+                            key={t.id}
+                            className="trad-btn"
+                            onClick={() => { dispatch({ type: "SET_FIELD", field: "selectedTrad", value: t.id === selectedTrad ? null : t.id }); dispatch({ type: "SET_FIELD", field: "customWorld", value: "" }); }}
+                            disabled={isGenerating}
+                            style={{
+                              padding: "8px 0", borderRadius: "3px", textAlign: "center",
+                              border: `1px solid ${selectedTrad === t.id ? t.color : "rgba(255,255,255,0.1)"}`,
+                              background: selectedTrad === t.id ? `${t.color}18` : "rgba(255,255,255,0.02)",
+                              color: selectedTrad === t.id ? t.color : "rgba(255,255,255,0.5)",
+                              boxShadow: selectedTrad === t.id ? `0 0 14px ${t.color}33, inset 0 0 10px ${t.color}0a` : "none",
+                              fontSize: "12px", cursor: "pointer", fontFamily: "inherit",
+                              letterSpacing: "0.03em", whiteSpace: "nowrap", overflow: "hidden",
+                              textOverflow: "ellipsis",
+                            }}
+                          >
+                            {t.glyph} {t.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* 历史时代 — 分类标题行 + 等宽网格 */}
+            {activeTradTab === "history" && (
+              <div style={{ display: "flex", flexDirection: "column", gap: "20px", marginBottom: 32 }}>
+                {HISTORY_CATEGORIES.map(cat => {
+                  const worlds = TRADITIONS.filter(t => t.category === "history" && t.subcategory === cat.key);
+                  return (
+                    <div key={cat.key}>
+                      <div style={{
+                        display: "flex", alignItems: "center", gap: 10, marginBottom: 8,
+                      }}>
+                        <div style={{ width: 2, height: 12, background: `${accentColor}55`, borderRadius: 1, flexShrink: 0 }} />
+                        <span style={{ fontSize: 10, color: `${accentColor}77`, letterSpacing: 3 }}>{cat.label}</span>
+                        <span style={{ fontSize: 9, color: "rgba(255,255,255,0.18)" }}>{worlds.length}</span>
+                        <div style={{ flex: 1, height: 1, background: "#14121e" }} />
+                      </div>
                       <div style={{
                         display: "grid", gridTemplateColumns: "repeat(5, 1fr)",
                         gap: "7px",
