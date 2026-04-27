@@ -66,17 +66,20 @@ async function callLLM(cfg, system, userContent, maxTokens = 1200) {
   }
 
   if (provider === "anthropic") {
-    // 注意：anthropic-dangerous-direct-browser-access 是开发模式的临时方案，
-    // 允许从浏览器直接调用 Anthropic API（绕过 CORS 限制）。
-    // 生产环境必须通过后端代理转发请求，不得携带此 header。
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
+    const endpoint = base_url
+      ? `${base_url.replace(/\/$/, "")}/v1/messages`
+      : "https://api.anthropic.com/v1/messages";
+    // 注意：anthropic-dangerous-direct-browser-access 只能用于本地直接请求官方 API。
+    // 一旦配置 base_url，就视为走代理路径，不再发送该 header。
+    const headers = {
+      "Content-Type": "application/json",
+      "x-api-key": api_key,
+      "anthropic-version": "2023-06-01",
+      ...(base_url ? {} : { "anthropic-dangerous-direct-browser-access": "true" }),
+    };
+    const res = await fetch(endpoint, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": api_key,
-        "anthropic-version": "2023-06-01",
-        "anthropic-dangerous-direct-browser-access": "true", // 仅开发模式
-      },
+      headers,
       body: JSON.stringify({ model, max_tokens: maxTokens, system, messages: [{ role: "user", content: userContent }] }),
     });
     if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e.error?.message || `Anthropic ${res.status}`); }
