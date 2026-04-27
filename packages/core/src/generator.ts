@@ -15,6 +15,7 @@ import type {
   CharacterEnviron,
   CharacterNetwork,
   NutshellConfig,
+  SourceNote,
 } from "./types.js";
 import {
   WORLD_SEED_SYSTEM_PROMPT,
@@ -40,6 +41,94 @@ import {
   validateCharacterEnviron,
   validateCharacterNetwork,
 } from "./schemas.js";
+
+// ─── SOURCE TRACEABILITY + QUALITY EVALUATION ────────────────────────────────
+
+function toSourceNote(article: WikiArticle, role: SourceNote["role"]): SourceNote {
+  return {
+    role,
+    title: article.title,
+    url: article.url,
+    language: article.language,
+    excerpt: article.extract.slice(0, 500),
+  };
+}
+
+function buildSourceMap(
+  researchBundle: ResearchBundle,
+  charArticles: WikiArticle[],
+): NonNullable<SoulBundle["sources"]> {
+  return {
+    tradition: researchBundle.tradition
+      ? toSourceNote(researchBundle.tradition, "tradition")
+      : undefined,
+    character: charArticles.map((article) => toSourceNote(article, "character")),
+    supplementary: researchBundle.supplementary.map((article) => toSourceNote(article, "supplementary")),
+  };
+}
+
+function evaluateQuality(bundle: SoulBundle): NonNullable<SoulBundle["quality"]> {
+  const { soul, genealogy, environ, network, sources, files } = bundle;
+  const supportingLayers = [genealogy, environ, network].filter(Boolean).length;
+  const innerLayerCount = [soul.shadow, soul.desire_vs_duty, soul.self_myth, soul.wound].filter(Boolean).length;
+  const sourceCount = sources
+    ? (sources.tradition ? 1 : 0) + sources.character.length + sources.supplementary.length
+    : 0;
+
+  const checks = [
+    {
+      id: "core_files",
+      label: "核心文件齐全",
+      passed: Boolean(files.soul_md && files.memory_md && files.skill_md),
+      detail: "soul.md / memory.md / skill.md 三个基础文件必须都生成。",
+    },
+    {
+      id: "identity_core",
+      label: "身份核心已锚定",
+      passed: [soul.world_bond, soul.essence, soul.voice, soul.stance, soul.taboos].every(Boolean),
+      detail: "需要具备世界纽带、本质、声线、价值排序和禁区。",
+    },
+    {
+      id: "dialogue_protocol",
+      label: "对话协议可执行",
+      passed: Boolean(soul.activation && soul.cognitive_style && soul.core_capabilities && soul.failure_modes && soul.catchphrases?.length),
+      detail: "需要具备激活条件、认知风格、能力、失真模式和至少一句标志语。",
+    },
+    {
+      id: "memory_baseline",
+      label: "记忆基线完整",
+      passed: Boolean(soul.formative_events && soul.current_concerns && soul.knowledge_boundary),
+      detail: "需要具备形成性事件、当前关切与知识边界。",
+    },
+    {
+      id: "inner_depth",
+      label: "内面层不空心",
+      passed: innerLayerCount >= 2,
+      detail: "shadow / desire_vs_duty / self_myth / wound 至少应有两项。",
+    },
+    {
+      id: "context_layers",
+      label: "附加层已展开",
+      passed: supportingLayers >= 1,
+      detail: "谱系、环境、关系至少应成功生成一层，避免角色悬空。",
+    },
+    {
+      id: "source_traceability",
+      label: "证据链已保留",
+      passed: sourceCount > 0,
+      detail: "至少保留一条传统、角色或补充来源，便于后续审计和补修。",
+    },
+  ];
+
+  const passedCount = checks.filter((check) => check.passed).length;
+  const score = checks.length === 0 ? 1 : passedCount / checks.length;
+
+  return {
+    score,
+    checks,
+    issues: checks.filter((check) => !check.passed).map((check) => check.label),
+  };
+}
 
 // ─── KNOWN TRADITIONS ─────────────────────────────────────────────────────────
 
@@ -389,6 +478,11 @@ export async function generate(
   bundle.files.skill_os_md = buildSkillOsMd(bundle, charSlug);
   bundle.files.install_sh = buildInstallSh(soul.character_name, charSlug, worldSeed.tradition_name);
   bundle.files.readme_md = buildReadmeMd(bundle, charSlug);
+
+  // Stage 7: Source traceability + quality scoring (opt-in attachments)
+  report("quality:evaluating");
+  bundle.sources = buildSourceMap(researchBundle, charArticles);
+  bundle.quality = evaluateQuality(bundle);
 
   return bundle;
 }

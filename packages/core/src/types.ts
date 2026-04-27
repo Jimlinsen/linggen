@@ -235,11 +235,55 @@ export interface CharacterNetwork {
   relational_taboo: string;
 }
 
+// ─── SOURCES + QUALITY ───────────────────────────────────────────────────────
+
+export interface SourceNote {
+  /** What role this source played in generation */
+  role: "tradition" | "character" | "supplementary";
+
+  /** Title of the source article */
+  title: string;
+
+  /** Canonical URL */
+  url: string;
+
+  /** Source language */
+  language: "en" | "zh";
+
+  /** Short excerpt preserved for traceability */
+  excerpt: string;
+}
+
+export interface BundleQualityCheck {
+  /** Stable identifier for this check */
+  id: string;
+
+  /** Human-readable check label */
+  label: string;
+
+  /** Whether the check passed */
+  passed: boolean;
+
+  /** Additional detail or failure explanation */
+  detail: string;
+}
+
+export interface BundleQualityReport {
+  /** 0..1 score derived from passed checks */
+  score: number;
+
+  /** Flat checklist for auditing quality */
+  checks: BundleQualityCheck[];
+
+  /** Convenience list of failed check labels */
+  issues: string[];
+}
+
 // ─── SOUL BUNDLE ─────────────────────────────────────────────────────────────
 
 /**
  * A SoulBundle is the complete package for one character:
- * their world seed + their soul + their three output files.
+ * their world seed + their soul + their generated files.
  * This is what adapters receive and transform.
  */
 export interface SoulBundle {
@@ -276,6 +320,16 @@ export interface SoulBundle {
     /** Package README — installation instructions */
     readme_md?: string;
   };
+
+  /** Source traceability captured from research (opt-in, populated when available) */
+  sources?: {
+    tradition?: SourceNote;
+    character: SourceNote[];
+    supplementary: SourceNote[];
+  };
+
+  /** Quality checks over the generated bundle (opt-in, populated when evaluated) */
+  quality?: BundleQualityReport;
 
   /** Generation metadata */
   meta: {
@@ -344,7 +398,7 @@ export const DEFAULT_CONFIG: NutshellConfig = {
   provider: "anthropic",
   model: "claude-sonnet-4-20250514",
   default_adapter: "openclaw",
-  output_dir: "~/.openclaw",
+  output_dir: "~/Desktop",
   language: "auto",
 };
 

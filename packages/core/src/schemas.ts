@@ -125,6 +125,29 @@ export const CharacterNetworkSchema = z.object({
 export type ValidatedCharacterNetwork = z.infer<typeof CharacterNetworkSchema>;
 export const validateCharacterNetwork = makeValidator(CharacterNetworkSchema);
 
+// ─── SOURCES + QUALITY ───────────────────────────────────────────────────────
+
+export const SourceNoteSchema = z.object({
+  role: z.enum(["tradition", "character", "supplementary"]),
+  title: z.string().min(1),
+  url: z.string().min(1),
+  language: z.enum(["en", "zh"]),
+  excerpt: z.string().min(1),
+});
+
+export const BundleQualityCheckSchema = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  passed: z.boolean(),
+  detail: z.string().min(1),
+});
+
+export const BundleQualityReportSchema = z.object({
+  score: z.number().min(0).max(1),
+  checks: z.array(BundleQualityCheckSchema),
+  issues: z.array(z.string().min(1)),
+});
+
 // ─── SOUL BUNDLE ──────────────────────────────────────────────────────────────
 
 export const SoulBundleSchema = z.object({
@@ -140,6 +163,14 @@ export const SoulBundleSchema = z.object({
     environ_md: z.string().min(1).optional(),
     network_md: z.string().min(1).optional(),
   }),
+  sources: z
+    .object({
+      tradition: SourceNoteSchema.optional(),
+      character: z.array(SourceNoteSchema),
+      supplementary: z.array(SourceNoteSchema),
+    })
+    .optional(),
+  quality: BundleQualityReportSchema.optional(),
   meta: z.object({
     generated_at: z.string().min(1),
     model: z.string().min(1),

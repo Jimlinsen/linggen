@@ -3,6 +3,7 @@
  */
 export type {
   WorldSeed, Soul, SoulBundle, CharacterGenealogy, CharacterEnviron, CharacterNetwork, CharacterRelation,
+  SourceNote, BundleQualityCheck, BundleQualityReport,
   NutshellConfig, NutshellAdapter, ExportResult, ExportOptions,
   WorldSeedOptions, SoulOptions,
 } from "./types.js";
@@ -16,6 +17,7 @@ export { buildSoulMd, buildMemoryMd, buildSkillMd, buildEnvironMd, buildNetworkM
 export { packTarGz } from "./packager.js";
 export {
   WorldSeedSchema, GenealogySchema, SoulSchema, CharacterEnvironSchema, CharacterNetworkSchema, SoulBundleSchema,
+  SourceNoteSchema, BundleQualityCheckSchema, BundleQualityReportSchema,
   validateWorldSeed, validateGenealogy, validateSoul, validateCharacterEnviron, validateCharacterNetwork, validateSoulBundle,
 } from "./schemas.js";
 export type {
