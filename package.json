@@ -11,9 +11,12 @@
     "packages/adapters/*"
   ],
   "scripts": {
-    "build": "npm run build --workspaces --if-present",
+    "build": "npm run check:seeds && npm run build:workspaces && npm run check:regressions",
+    "build:workspaces": "npm run build --workspaces --if-present",
+    "check:seeds": "node scripts/check-seeds.mjs",
+    "check:regressions": "node scripts/check-regressions.mjs",
     "dev": "npm run dev --workspace packages/studio",
-    "test": "npm run test --workspaces --if-present",
+    "test": "npm run check:regressions",
     "lint": "eslint packages/*/src"
   },
   "devDependencies": {
